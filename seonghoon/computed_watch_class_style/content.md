@@ -17,7 +17,7 @@ type이 number일 경우 숫자, type이 text일 경우 문자열로 취급합�
 data 안에 배열데이터가 있고 이 배열을 반복문과 함께 사용할 때,
 원하는 형태로 정렬하거나 조작을 하여 View단에 넣고 싶다면 계산된 속성을 사용하면 됩니다.
 
-```
+```js
 
 data : {
     fruitOrderList: [ 
