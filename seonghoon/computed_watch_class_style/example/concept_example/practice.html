@@ -28,6 +28,7 @@
             </ul>
         </div>
         <div class="box" :class="(isClickedBox) ? defaultStyle : clickStyle" @click="boxChange" :style="centerStyle"></div>
+        <!-- StyleBinding의 특징 중 하나는 camelCase와 kebab-case를 알아서 해석해준다. -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
     <script>
@@ -49,8 +50,8 @@
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    'margin-top': '-50px',
-                    'margin-left': '-50px'
+                    marginTop: '-50px',
+                    marginLeft: '-50px'
                 },
                 orderList: [
                     {

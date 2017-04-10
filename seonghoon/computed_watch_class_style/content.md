@@ -89,7 +89,7 @@ style 디렉티브의 경우 객체 타입의 데이터를 통해 적용할 수 
 배열형태로 여러 형태의 스타일을 전달할 수도 있습니다.
 
 ```
-    <div :style="{'font-size':'24px'}"></div>
+    <div :style="{'fontSize':'24px'}"></div>
     <div :style="Astyle"></div>
     <div :style="[aStyle, bStyle]"></div>
 ```
