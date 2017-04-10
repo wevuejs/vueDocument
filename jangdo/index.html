@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computed</title>
+
+</head>
+<body>
+<div class="exam01">
+    <p>{{ message }}</p>
+    <p>{{ reverseMessage }}</p>
+    <p>{{ upperMessage }}</p>
+</div>
+<div id="demo">{{ fullName }}</div>
+
+<div id="demo2" v-bind:class="{ active : isActive }" ></div>
+
+<style>
+.static.btn {color:#000;}
+.static.btn.active {color:#ff0000;}
+</style>
+<a href="#none" class="static btn" v-on:click="toggleClass" v-bind:class="{ active : isActive }">123</a>
+
+<div class="static2" v-bind:style="styleObject" v-on:click="toggleClass">123</div>
+<script src="js/vue.js"></script>
+<script>
+var exam01 = new Vue({
+    el : '.exam01',
+    data : {
+        message : 'HI Vuejs'
+    },
+    computed : {
+        reverseMessage : function(){
+            return this.message.split('').reverse().join('')
+        },
+        upperMessage : function(){
+            return this.message.toUpperCase();
+        }
+    }
+});
+
+var demo = new Vue({
+    el : '#demo',
+    data : {
+        firstName : 'Foo',
+        lastName : 'Bar'
+    },
+    // watch : {
+    //     firstName : function(val){
+    //         this.fullName = val + ' ' + this.lastName
+    //     },
+    //     lastName : function(val){
+    //         this.fullName = this.firstName + ' ' + val
+    //     }
+    // }
+    computed : {
+        fullName : {
+            // getter
+            get : function(){
+                return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set : function(newValue){
+                console.log(newValue);
+                var names = newValue.split(' ');
+                console.log(names);
+                this.firstName = names[0];
+                this.lastName = names[names.length -1];
+                console.log(this.lastName);
+            }
+        }
+    }
+});
+demo.fullName = '이 상윤';
+
+var demo2 = new Vue({
+    el : '.static',
+    data: {
+        isActive: false
+    },
+    methods: {
+        toggleClass: function(){
+            this.isActive = !this.isActive;
+          // some code to filter users
+        }
+    }
+});
+
+var demo3 = new Vue({
+    el : '.static2',
+    data: {
+        styleObject: {
+            color: 'red',
+            fontSize: '30px'
+        }
+    },
+    methods : {
+        toggleClass : function(){
+            console.log(this.styleObject.color);
+            if ( this.styleObject.color == 'red' ) {
+                this.styleObject.color = 'blue'
+            } else if ( this.styleObject.color == 'blue' ) {
+                this.styleObject.color = 'red'
+            }
+        }
+    }
+});
+
+</script>
+</body>
+</html>
