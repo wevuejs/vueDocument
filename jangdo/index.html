@@ -19,9 +19,9 @@
 .static.btn {color:#000;}
 .static.btn.active {color:#ff0000;}
 </style>
-<a href="#none" class="static btn" v-on:click="toggleClass" v-bind:class="{ active : isActive }">123</a>
+<a href="#none" class="static btn" v-on:click="toggleClass" v-bind:class="{ active : isActive }">클릭시 toggleClass</a>
 
-<div class="static2" v-bind:style="styleObject" v-on:click="toggleClass">123</div>
+<div class="static2" v-bind:style="styleObject" v-on:click="toggleClass">클릭시 toggleClass</div>
 <script src="js/vue.js"></script>
 <script>
 var exam01 = new Vue({
