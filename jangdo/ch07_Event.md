@@ -2,6 +2,8 @@
 
 ## 이벤트 청취
 `v-on` 디렉티브를 사용하여 DOM 이벤트를 듣고 트리거 될 때 Javascript를 실행 할 수 있다.
+
+[트리거](http://terms.naver.com/entry.nhn?docId=3347639&cid=40942&categoryId=32840) : 특정 테이블이나 뷰에 대한 이벤트에 대한 반응으로 자동으로 실행되는 프로시저 코드
 ```html
 <div id="example-1">
   <button v-on:click="counter += 1">Add 1</button>
@@ -23,6 +25,8 @@ var example1 = new Vue({
   <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
   <button v-on:click="greet">Greet</button>
 </div>
+```
+```js
 var example2 = new Vue({
   el: '#example-2',
   data: {
@@ -46,14 +50,13 @@ example2.greet() // -> 'Hello Vue.js!'
 
 ## 인라인 메소드 핸들러
 메소드 이름을 직접 바인딩 하는 대신 인라인 JavaScript 구문에 메소드를 사용할 수도 있다.
-인라인 명령문 핸들러에서 원본 DOM 이벤트에 엑세스 해야할 수도 있다.
-특별한 `$event` 변수를 사용해 메소드에 전달할 수도 있다.
 ```html
 <div id="example-3">
     <button v-on:click="say('h1')">Say hi</button>
     <button v-on:click="say('what')">Say what</button>
 </div>
-
+```
+```js
 new Vue({
   el: '#example-3',
   methods: {
@@ -63,8 +66,28 @@ new Vue({
   }
 })
 ```
+
+때로 인라인 명령문 핸들러에서 원본 DOM 이벤트에 엑세스 해야할 수도 있다.
+특별한 `$event` 변수를 사용해 메소드에 전달할 수도 있다.
+```html
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+```
+```js
+//...
+methods: {
+  warn: function (message, event) {
+    // 이제 네이티브 이벤트에 액세스 할 수 있습니다
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+```
 ## 이벤트 수식어
-Vue는 `v-on` 이벤트에 이벤트 수식어를 제공한다.
+이벤트 핸들러 내부에서 `event.preventDefault()` 또는 `event.stopPropagation()` 를 호출 하는 것은 매우 보편적인 일이다.
+메소드 내에서 쉽게 이 작업을 할 수 있지만, DOM 이벤트 세부 사항을 처리하는 대신 데이터 로직에 대한 메소드만 사용할 수 있으면 더 좋을 것이다.
+이 문제를 해결하기 위해,Vue는 `v-on` 이벤트에 <strong>이벤트 수식어</strong>를 제공한다.
 - `.stop`
 - `.prevent`
 - `.capture`

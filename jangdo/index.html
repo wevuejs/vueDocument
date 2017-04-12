@@ -1,110 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Computed</title>
+    <title>Vue js - Event</title>
 
 </head>
+<style>
+.box {margin:30px; padding:30px; background-color:#f1f1f1;}
+</style>
 <body>
-<div class="exam01">
-    <p>{{ message }}</p>
-    <p>{{ reverseMessage }}</p>
-    <p>{{ upperMessage }}</p>
+<div id="example-1" class="box">
+    <button v-on:click="counter += 1">click</button>
+    <button v-on:click="counter = 0">reset</button>
+    <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
 </div>
-<div id="demo">{{ fullName }}</div>
+
+
+<div id="example-2" class="box">
+  <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
+  <button v-on:click="create('vue')">create</button>
+</div>
+
+<div id="example-3" class="box">
+    <a href="" v-on:click.stop="doThis">stop</a>
+</div>
+
+<div id="example-4" class="box">
+    <a href="" v-on:submit.prevent="doThis">prevent</a>
+</div>
+
+<div id="example-5" class="box">
+    <a href="" v-on:click.stop.prevent="doThis">stop prevent</a>
+</div>
 
 <div id="demo2" v-bind:class="{ active : isActive }" ></div>
 
 <style>
 .static.btn {color:#000;}
 .static.btn.active {color:#ff0000;}
+.box_vue {line-height:30px;}
+.box_vue:nth-child(2n+1) {background-color:aqua;}
+.box_vue:nth-child(3n+1) {background-color:#ff0000; color:#fff;}
+.box_vue:nth-child(4n+1) {background-color:#000; color:#fff;}
 </style>
 <a href="#none" class="static btn" v-on:click="toggleClass" v-bind:class="{ active : isActive }">클릭시 toggleClass</a>
 
 <div class="static2" v-bind:style="styleObject" v-on:click="toggleClass">클릭시 toggleClass</div>
 <script src="js/vue.js"></script>
 <script>
-var exam01 = new Vue({
-    el : '.exam01',
-    data : {
-        message : 'HI Vuejs'
-    },
-    computed : {
-        reverseMessage : function(){
-            return this.message.split('').reverse().join('')
-        },
-        upperMessage : function(){
-            return this.message.toUpperCase();
-        }
-    }
-});
 
-var demo = new Vue({
-    el : '#demo',
-    data : {
-        firstName : 'Foo',
-        lastName : 'Bar'
-    },
-    // watch : {
-    //     firstName : function(val){
-    //         this.fullName = val + ' ' + this.lastName
-    //     },
-    //     lastName : function(val){
-    //         this.fullName = this.firstName + ' ' + val
-    //     }
-    // }
-    computed : {
-        fullName : {
-            // getter
-            get : function(){
-                return this.firstName + ' ' + this.lastName
-            },
-            // setter
-            set : function(newValue){
-                console.log(newValue);
-                var names = newValue.split(' ');
-                console.log(names);
-                this.firstName = names[0];
-                this.lastName = names[names.length -1];
-                console.log(this.lastName);
-            }
-        }
-    }
-});
-demo.fullName = '이 상윤';
-
-var demo2 = new Vue({
-    el : '.static',
+var example1 = new Vue({
+    el: '#example-1',
     data: {
-        isActive: false
+        counter: 0
+    }
+});
+
+var example2 = new Vue({
+    el: '#example-2',
+    data: {
+        name: 'Vue는 쉽다쉽다쉽다쉽다...'
     },
+    // 메소드는 `methods` 객체 안에 정의합니다
     methods: {
-        toggleClass: function(){
-            this.isActive = !this.isActive;
-          // some code to filter users
+        create: function (msg) {
+            var div = document.createElement('div');
+            div.className = 'box_vue';
+            var exam2 = document.getElementById('example-2');
+            exam2.appendChild(div).innerHTML = example2.name + msg;
         }
     }
 });
 
-var demo3 = new Vue({
-    el : '.static2',
-    data: {
-        styleObject: {
-            color: 'red',
-            fontSize: '30px'
-        }
-    },
+var example3 = new Vue({
+    el: '#example-3',
     methods : {
-        toggleClass : function(){
-            console.log(this.styleObject.color);
-            if ( this.styleObject.color == 'red' ) {
-                this.styleObject.color = 'blue'
-            } else if ( this.styleObject.color == 'blue' ) {
-                this.styleObject.color = 'red'
-            }
+        doThis : function(event){
+            //return false;
+            console.log(event.target);
         }
     }
 });
+
+var example4 = new Vue({
+    el: '#example-4',
+    methods : {
+        doThis : function(event){
+            //return false;
+            console.log(event.target);
+        }
+    }
+});
+
+var example5 = new Vue({
+    el: '#example-5',
+    methods : {
+        doThis : function(event){
+            //return false;
+            console.log(event.target);
+        }
+    }
+});
+
+var example4 = new Vue({
+    el: '#example-4',
+    methods : {
+        doThis : function(event){
+            //return false;
+            console.log(event.target);
+        }
+    }
+});
+
+
+//example2.greet();
+
+
+
+// var demo = new Vue({
+//     el : '#demo',
+//     data : {
+//         firstName : 'Foo',
+//         lastName : 'Bar'
+//     },
+//     // watch : {
+//     //     firstName : function(val){
+//     //         this.fullName = val + ' ' + this.lastName
+//     //     },
+//     //     lastName : function(val){
+//     //         this.fullName = this.firstName + ' ' + val
+//     //     }
+//     // }
+//     computed : {
+//         fullName : {
+//             // getter
+//             get : function(){
+//                 return this.firstName + ' ' + this.lastName
+//             },
+//             // setter
+//             set : function(newValue){
+//                 console.log(newValue);
+//                 var names = newValue.split(' ');
+//                 console.log(names);
+//                 this.firstName = names[0];
+//                 this.lastName = names[names.length -1];
+//                 console.log(this.lastName);
+//             }
+//         }
+//     }
+// });
+// demo.fullName = '이 상윤';
+//
+// var demo2 = new Vue({
+//     el : '.static',
+//     data: {
+//         isActive: false
+//     },
+//     methods: {
+//         toggleClass: function(){
+//             this.isActive = !this.isActive;
+//           // some code to filter users
+//         }
+//     }
+// });
+//
+// var demo3 = new Vue({
+//     el : '.static2',
+//     data: {
+//         styleObject: {
+//             color: 'red',
+//             fontSize: '30px'
+//         }
+//     },
+//     methods : {
+//         toggleClass : function(){
+//             console.log(this.styleObject.color);
+//             if ( this.styleObject.color == 'red' ) {
+//                 this.styleObject.color = 'blue'
+//             } else if ( this.styleObject.color == 'blue' ) {
+//                 this.styleObject.color = 'red'
+//             }
+//         }
+//     }
+// });
 
 </script>
 </body>
