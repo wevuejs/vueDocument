@@ -1,0 +1,65 @@
+/* Default Style */
+* 	 		{margin:0; padding:0;}
+body		{background-color:#fff;}
+
+article, aside, hgroup, header, footer, figure, figcaption, nav, section {
+	display: block;
+}
+
+ul, ol, li {list-style:none;}
+a,em,span,strong {vertical-align:middle;}
+td *, div *, li *, span *, p * {vertical-align: middle;}
+
+img, hr		{border:none;}
+img			{vertical-align:top; border:0px;}
+
+/* Link Style */
+a:link		{text-decoration:none; color:#000;}
+a:visited	{text-decoration:none; color:#000;}
+a:active	{text-decoration:none; color:#000;}
+a:hover		{text-decoration:none; color:#000;}
+
+/* Table Style */
+table 		{width:100%; border-collapse:collapse; border-spacing:0; table-layout:fixed;}
+table td img {vertical-align:middle;}
+
+/* Tag all font-size set */
+b,h1,h2,h3,h4,h5,h6,th,dt, strong {
+	font-family:ngbold, dotum, Arial, sans-serif;
+	color:#5e5e5e;
+	line-height:120%;
+	font-size:12px;
+	font-weight:bold;
+}
+body,p,div,ul,li,dl,dd,ol,fieldset,textarea,input,select,table,td,address,cite {
+	font-family:ng, dotum, Arial, sans-serif;
+	color:#5e5e5e;
+	font-size:12px;
+	line-height:120%;
+}
+a,em,span {
+	font-family:inherit;
+	color:inherit;
+	font-size:inherit;
+	line-height:inherit;
+}
+
+/* From Style */
+textarea	{padding:5px; border:solid 1px #333; background-color:#fff;}
+input		{vertical-align:middle;}
+input.txt,
+input.text,
+input.it	{height:23px; line-height:23px; border:solid 1px #333; background-color:#fff;}
+input.chk	{}
+input.radio	{}
+input[type=button] {cursor:pointer;}
+
+select			{height:23px; line-height:23px; border:solid 1px #333; background-color:#fff;}
+hr, caption		{display:none;}
+legend			{position:absolute; height:0; font-size:0px; line-height:0; overflow:hidden; text-indent:-20000px;}
+address,cite,em	{font-style:normal;}
+fieldset		{border:0; padding:0;}
+label			{cursor:pointer;}
+
+/* Hide Set */
+.hide	{position:absolute; left:-9999px; top:-9999px; font-size:0; line-height:0; height:0; overflow:hidden;}

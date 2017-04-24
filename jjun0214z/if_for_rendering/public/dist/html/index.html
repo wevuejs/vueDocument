@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>ssssss</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+	<study-category></study-category>
+	<div :style="style.layout">
+		<template v-if="Selected == 'study01'">
+			<strong :style="style.tit">조건부 렌더링 활용</strong>
+			<q-list></q-list>
+		</template>
+		<template v-else-if="Selected == 'study02'">
+			<strong :style="style.tit">리스트 렌더링 활용</strong>
+			<p>셀렉트 구현방식으로 대체</p>
+		</template>
+	</div>
+</div>
+<script type="text/javascript" src="C:\Users\min\Documents\GitHub\vueDocument\jjun0214z\if_for_rendering\public\dist\js/polyfill.js?8e291d35c06b86e041c3"></script><script type="text/javascript" src="C:\Users\min\Documents\GitHub\vueDocument\jjun0214z\if_for_rendering\public\dist\js/bundle.js?8e291d35c06b86e041c3"></script></body>
+</html>

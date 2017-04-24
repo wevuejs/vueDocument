@@ -178,7 +178,7 @@ var vm = new Vue({
 
 <div id="app">
 	<ul>
-		<li v-for="(item, key, index) in(of) items"> // 두번째 인자에서는 객체의 속성값, 3번째 인자에서는 속성의 요소값을 반환 합니다. 또한 객체를 또한 Array Iterator 형태로 변환하지 않아도 for of 구문을 사용하여 요소값이 반환됩니다.
+		<li v-for="(item, key, index) in(of) items"> // 두번째 인자에서는 객체의 속성값, 3번째 인자에서는 index 값을 반환 합니다.
 			{{ item }}, {{ key }}, {{ index }}
 		</li>
 	</ul>
@@ -250,7 +250,7 @@ var vm = new Vue({
 
 ### v-for 와 v-if의 우선순위
 
-같은 노드에 v-for, v-if 같이 존재할때 v-for는 v-if 보다 우선순위를 가지기 때문에 루프를 반복바다 조건이 성립됩니다.
+같은 노드에 v-for, v-if 같이 존재할때 v-for는 v-if 보다 우선순위를 가지기 때문에 루프를 반복마다 조건이 성립됩니다.
 
 이는 반복문을 쓸대 일부 항목만 렌더링 하는 경우에 유리합니다.
 
@@ -278,6 +278,8 @@ var vm = new Vue({
 ```
 
 ### 필터링 / 정렬 된 결과 표시하기
+
+
 
 ```
 // computed
